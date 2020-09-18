@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\HomeCOntroller;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PostController;
 
 // Auth::routes();
 
@@ -48,7 +49,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/post', [HomeController::class, 'show'])->name('posts.show');
+// Route::get('/post', [HomeController::class, 'show'])->name('posts.show');
 
 // Route::get('/categorias', 'CategoryController@index');
 Route::get('/categorias', [CategoryController::class, 'index']);
@@ -62,3 +63,9 @@ Route::get('/admin/categories', [CategoryController::class, 'index'])->name('adm
 Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
 
 Route::get('/categories', [CategoryController::class, 'getCategories'])->name('admin.categories.getCategories');
+
+Route::match(['PUT', 'PATCH'], '/categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
+
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
+Route::resource('posts', PostController::class);

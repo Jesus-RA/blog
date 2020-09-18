@@ -20,9 +20,9 @@
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="row">
-                    @for ($imagen = 3; $imagen < 9; $imagen++)
+                    @foreach ($posts as $post)
                         @include('components.post')
-                    @endfor
+                    @endforeach
                 </div>
             </div>
 

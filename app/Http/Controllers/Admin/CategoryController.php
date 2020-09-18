@@ -20,7 +20,21 @@ class CategoryController extends Controller
     public function store(Request $request){
         
         $category = Category::create($request->all());
-        return back();
+        return back();//->withSuccess("$category->name created successfully!");
+    }
+
+    public function update(Request $request, Category $category){
+        
+        $category->name = $request->name;
+        $category->save();
+
+        return $category->name;
+    }
+
+    public function destroy(Category $category){
+        $category->delete();
+
+        return $category->name;
     }
 
     public function getCategories(){
