@@ -25,7 +25,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence($ndWords = 4, $variableNbWords = true),
             'image' => $this->faker->randomElement(['images/3.png', 'images/4.png', 'images/5.png', 'images/6.png', 'images/7.png', 'images/8.png']),
-            'content' => $this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),
+            'content' => $this->faker->paragraph($nbSentences = 30, $variableNbSentences = true),
         ];
     }
 }

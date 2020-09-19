@@ -46,7 +46,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $relatedPosts = Post::latest()
+            ->where('category_id', $post->category_id)
+            ->where('id', '!=', $post->id)
+            ->take(3)
+            ->get();
+        
+        $latestPosts = Post::latest()->take(2)->get();
+
+        return view('posts.show', compact('post', 'relatedPosts', 'latestPosts'));
     }
 
     /**

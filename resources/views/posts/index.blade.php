@@ -10,8 +10,9 @@
                 <nav class="text-center my-5">
                     <h3 class="text-center mt-5">Categorías</h3>
                     <a href="#" class="mx-3 pb-3 link-category d-block d-md-inline selected-category" >Todas</a>
-                    <a href="#" class="mx-3 pb-3 link-category d-block d-md-inline" >Programación</a>
-                    <a href="#" class="mx-3 pb-3 link-category d-block d-md-inline" >Desarrollo web</a>
+                    @foreach ($categories as $category)
+                        <a href="#" class="mx-3 pb-3 link-category d-block d-md-inline">{{ $category->name }}</a>
+                    @endforeach
                 </nav>
             </div>
         </div>
@@ -26,9 +27,9 @@
                 </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 justify-content-center d-flex">
                 <!-- Paginador -->
-
+                {{ $posts->links() }}
             </div>
         </div>
     </section>

@@ -52,7 +52,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/post', [HomeController::class, 'show'])->name('posts.show');
 
 // Route::get('/categorias', 'CategoryController@index');
-Route::get('/categorias', [CategoryController::class, 'index']);
+Route::get('/categorias', [CategoryController::class, 'index'])->name('categorias.index');
 
 Route::get('/home', function(){
     return view('home');

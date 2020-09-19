@@ -8,4 +8,5 @@
 
 @section('content')
     <p>Welcome to our manage panel</p>
+    <a href="{{route('categorias.index')}}" class="btn btn-dark btn-block">Categorias</a>
 @endsection
