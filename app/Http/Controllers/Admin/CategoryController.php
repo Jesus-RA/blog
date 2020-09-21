@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 
 class CategoryController extends Controller
 {
@@ -21,6 +22,12 @@ class CategoryController extends Controller
         
         $category = Category::create($request->all());
         return back();//->withSuccess("$category->name created successfully!");
+    }
+
+    public function show(Category $category){
+        $posts = Post::where('category_id', $category->id)->get();
+        $categories = Category::all();
+        return view('admin.categories.show', compact('category', 'posts', 'categories'));
     }
 
     public function update(Request $request, Category $category){

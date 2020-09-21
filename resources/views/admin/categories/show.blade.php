@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    
     <!-- Contenido -->
     <section class="container-fluid content">
         <!-- Categorías -->
@@ -13,7 +12,7 @@
                     @foreach ($categories as $category)
                         <a 
                             href="{{ route('categories.show', $category) }}"
-                            class="mx-3 pb-3 link-category d-block d-md-inline"
+                            class="mx-3 pb-3 link-category d-block d-md-inline {{ Request::path() === 'category/'.$category->id ? 'selected-category' : '' }}"
                         >
                             {{ $category->name }}
                         </a>
@@ -34,7 +33,7 @@
 
             <div class="col-12 justify-content-center d-flex">
                 <!-- Paginador -->
-                {{ $posts->links() }}
+                {{-- {{ $posts->links() }} --}}
             </div>
         </div>
     </section>

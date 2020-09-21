@@ -58,6 +58,9 @@ Route::get('/home', function(){
     return view('home');
 })->middleware('auth');
 
+// Mostrar posts de una categoría
+Route::get('/category/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
 
 Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
